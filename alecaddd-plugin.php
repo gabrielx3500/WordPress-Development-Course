@@ -53,3 +53,4 @@ register_activation_hook(__FILE__,array($alecadddPlugin,'activate'));
 register_deactivation_hook(__FILE__,array($alecadddPlugin,'deactivate'));
 
 //uninstall
+register_deactivation_hook(__FILE__,array($alecadddPlugin,'uninstall'));
