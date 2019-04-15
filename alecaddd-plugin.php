@@ -20,14 +20,19 @@ defined('ABSPATH') or die("Hey you don't access this file");
 
 class AlecadddPlugin
 {
-	function activate(){
-      echo "The Plugin was activated";
+	function __construct(){
+      add_action('init',array($this,'custom_post_type'));
 	}
+	function activate(){
+      flush_rewrite_rules();
 	function deactivate(){
 		
 	}
 	function uninstall(){
 		
+	}
+	function custom_post_type(){
+      register_post_type('book',['public'=>true,'label'=>'Books']);
 	}
 	
 	
@@ -43,4 +48,3 @@ register_activation_hook(__FILE__,array($alecadddPlugin,'activate'));
 register_deactivation_hook(__FILE__,array($alecadddPlugin,'deactivate'));
 
 //uninstall
-register_uninstall_hook(__FILE__,array($alecadddPlugin,'uninstall'));
